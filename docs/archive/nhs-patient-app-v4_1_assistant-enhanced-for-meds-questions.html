@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>PocketHealth — NHS Condition Manager</title>
+<title>MyHealth — NHS Condition Manager</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -1210,7 +1210,7 @@ body {
   <div class="asst-panel">
     <div class="asst-header">
       <div class="asst-header-title">
-        <div class="h1" id="asst-header-title">PocketHealth Assistant</div>
+        <div class="h1" id="asst-header-title">MyHealth Assistant</div>
         <div class="h2" id="asst-header-subtitle">Here to help you get set up</div>
       </div>
       <div class="asst-header-actions">
@@ -1255,7 +1255,7 @@ body {
       <div class="nhs-badge">NHS</div>
       <div class="nhs-logo-text">National Health<br>Service</div>
     </div>
-    <h1 class="landing-title">PocketHealth<br><em>Companion</em></h1>
+    <h1 class="landing-title">MyHealth<br><em>Companion</em></h1>
     <p class="landing-sub">Manage your conditions and share your health data safely with those who care for you.</p>
     <div class="landing-cards">
       <div class="landing-card medguide" onclick="openMedicineGuideFromLanding()">
@@ -1297,7 +1297,7 @@ body {
       Back
     </button>
     <div class="login-title">Welcome<br><em>back</em></div>
-    <p class="login-subtitle">Sign in to your PocketHealth profile</p>
+    <p class="login-subtitle">Sign in to your MyHealth profile</p>
     <div class="login-card">
       <div class="field-group">
         <label class="field-label">Email</label>
@@ -2416,7 +2416,7 @@ window.addEventListener('load', () => {
   const container = document.getElementById('qr-container');
   if (container && typeof QRCode !== 'undefined') {
     new QRCode(container, {
-      text: 'https://pockethealth.nhs.uk/emergency/a3f9x2k8p1',
+      text: 'https://myhealth.nhs.uk/emergency/a3f9x2k8p1',
       width: 200, height: 200,
       colorDark: '#1a237e', colorLight: '#ffffff',
       correctLevel: QRCode.CorrectLevel.M
@@ -5248,7 +5248,7 @@ function selectFeedback(btn) {
 // real LLM/guardrail/speech infrastructure is built.
 // ══════════════════════════════════════════════════════════
 
-const ASST_DRAFT_KEY = 'pockethealth_assistant_draft_v1';
+const ASST_DRAFT_KEY = 'myhealth_assistant_draft_v1';
 
 // Has the conversation UI been built at least once this page load — reopening
 // the FAB after closing it should resume the visible conversation, not
@@ -5366,7 +5366,7 @@ function closeAssistant() {
 }
 
 function setAssistantHeader() {
-  document.getElementById('asst-header-title').textContent = 'PocketHealth Assistant';
+  document.getElementById('asst-header-title').textContent = 'MyHealth Assistant';
   document.getElementById('asst-header-subtitle').textContent = assistantState.mode === 'help'
     ? `Hi ${userProfile.firstName || 'there'} — how can I help?`
     : "Let's get you set up";
@@ -5492,7 +5492,7 @@ const OUT_OF_SCOPE_PATTERNS = [
   /\bignore (previous|prior|your) instructions\b/i
 ];
 function isOutOfScope(text) { return OUT_OF_SCOPE_PATTERNS.some(p => p.test(text)); }
-const OUT_OF_SCOPE_REPLY = "I can't help with that here — I'm only set up to help you get your PocketHealth profile started, or find your way around the app. For medicine information, try the Medicine Guide from the home screen. For anything about symptoms, dosage or diagnosis, please contact your GP or call NHS 111.";
+const OUT_OF_SCOPE_REPLY = "I can't help with that here — I'm only set up to help you get your MyHealth profile started, or find your way around the app. For medicine information, try the Medicine Guide from the home screen. For anything about symptoms, dosage or diagnosis, please contact your GP or call NHS 111.";
 
 function handleAssistantAnswer(value, isQuickReply, displayLabel) {
   asstClearQuickReplies();
@@ -5551,7 +5551,7 @@ function startOnboarding() {
   // Deliberately doesn't presume onboarding is the goal — mode is asked
   // first, then routeAfterModeChosen() decides what to offer next based on
   // what the person's actually doing (see below).
-  asstSay("Hi, I'm the PocketHealth assistant.", askInputMode);
+  asstSay("Hi, I'm the MyHealth assistant.", askInputMode);
 }
 
 function offerResume() {
